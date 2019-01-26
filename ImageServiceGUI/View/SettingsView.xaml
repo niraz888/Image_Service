@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="ImageServiceGUI.View.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ImageServiceGUI.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="525">
+    <StackPanel>
+        <StackPanel Background="LightGray"></StackPanel>
+        <Label x:Name="Settings" HorizontalAlignment="Center" Content="Settings" FontSize="15" FontWeight="Bold" Foreground="Blue" FontStyle="italic" ></Label>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0"  x:Name="textBlock"  HorizontalAlignment="Left"  Text="Output Directory:"   FontWeight="Bold" VerticalAlignment="Top"/>
+            <TextBlock Grid.Row="1" Grid.Column="0"  x:Name="textBlock1" HorizontalAlignment="Left" FontWeight="Bold" TextWrapping="Wrap" Text="Source Name:"  VerticalAlignment="Top"/>
+            <TextBlock Grid.Row="2" Grid.Column="0"  x:Name="textBlock2" HorizontalAlignment="Left"  FontWeight="Bold" TextWrapping="Wrap" Text="Log Name:"  VerticalAlignment="Top"/>
+            <TextBlock Grid.Row="3" Grid.Column="0"  x:Name="textBlock3" HorizontalAlignment="Left"  FontWeight="Bold" TextWrapping="Wrap" Text="Thumbnail Size:"  VerticalAlignment="Top"/>
+
+
+            <TextBlock Grid.Row="0" Grid.Column="1"  Text="{Binding OutPutDir}"></TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="1"  Text="{Binding LogName}"></TextBlock>
+            <TextBlock Grid.Row="2" Grid.Column="1"   Text="{Binding SourceName}"></TextBlock>
+            <TextBlock Grid.Row="3" Grid.Column="1"  Text="{Binding TumbNail}"></TextBlock>
+
+        </Grid>
+        <Button x:Name="remove" Command="{Binding Remove}"  FontWeight="Bold" Height="25" AutomationProperties.AutomationId="Remove" HorizontalAlignment="Stretch">Remove</Button>
+        <Grid>
+            <ListBox Height="Auto" ItemsSource="{Binding handlers}" MaxHeight="120" SelectedItem="{Binding SelectedHandler }" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" />
+        </Grid>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,35 @@
+﻿<Window x:Class="ImageServiceGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:view="clr-namespace:ImageServiceGUI.View"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <i:Interaction.Triggers>
+        <i:EventTrigger>
+            <i:InvokeCommandAction Command="{Binding Close}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Window.Resources>
+        <view:ConvertColorMainWindow x:Key="ConvertColorMainWindow"/>
+    </Window.Resources>
+    <Grid Background="{Binding Path=IsConnected, Converter={StaticResource ConvertColorMainWindow}}">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TabControl >
+            <TabItem Header="Settings">
+                <view:SettingsView Grid.Row="1"
+                                      Height="220" VerticalAlignment="Top">
+                </view:SettingsView>
+            </TabItem>
+            <TabItem Header="Log">
+                <view:LogView Grid.Row="1"
+                                     Height="220" VerticalAlignment="Top">
+                </view:LogView>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
